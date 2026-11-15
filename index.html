@@ -279,7 +279,7 @@
   <button class="btn-copy" id="btnCopiar" onclick="copiarMensagem()">Copiar para o WhatsApp</button>
   <button class="btn-whats" onclick="enviarWhatsApp()">📲 Enviar direto no WhatsApp</button>
   <button class="btn-clear" onclick="limparFormulario()">LIMPAR FORMULÁRIO</button>
-  <button class="btn-link" type="button" onclick="apagarSalvos()">Apagar dados salvos (equipe, matrícula, supervisor, líder)</button>
+  <button class="btn-link" type="button" onclick="apagarSalvos()">Apagar dados salvos (supervisor e líder)</button>
 
   <div class="status" id="statusMsg" role="status" aria-live="polite"></div>
 
@@ -301,7 +301,7 @@
   const RODAPE_COPIA = '\n\n' + miniatura('gerador report cuidar');
 
   const $ = id => document.getElementById(id);
-  const CAMPOS_FIXOS = ['equipe', 'matricula', 'supervisor', 'lider'];
+  const CAMPOS_FIXOS = ['supervisor', 'lider'];
   const CAMPOS_OBRIGATORIOS = ['equipe', 'matricula', 'endereco', 'servico', 'relato', 'clienteCiente', 'supervisor', 'lider'];
   const CHAVE_FIXOS = 'reportCuidarFixos';
 
@@ -471,12 +471,12 @@
 
   /* ---------- Limpar ---------- */
   function limparFormulario() {
-    ['endereco', 'servico', 'relato'].forEach(id => $(id).value = '');
+    ['equipe', 'matricula', 'endereco', 'servico', 'relato'].forEach(id => $(id).value = '');
     $('clienteCiente').selectedIndex = 0;
     $('tipoLogradouro').selectedIndex = 0;
     CAMPOS_OBRIGATORIOS.forEach(id => marcarErro($(id), false));
     gerarTexto();
-    mostrarStatus('🧹 Formulário limpo (equipe, matrícula, supervisor e líder foram mantidos).', 'ok', 3000);
+    mostrarStatus('🧹 Formulário limpo (supervisor e líder foram mantidos).', 'ok', 3000);
   }
 
   /* ---------- Eventos ---------- */
