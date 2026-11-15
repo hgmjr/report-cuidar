@@ -20,7 +20,6 @@
       min-height: 100vh;
       min-height: 100dvh;
     }
-    /* Arte de fundo: cobre qualquer tamanho de tela e fica fixa ao rolar */
     body::before {
       content: "";
       position: fixed;
@@ -217,7 +216,7 @@
     const mapa = {a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ'};
     return txt.toLowerCase().split('').map(c => mapa[c] || c).join('');
   }
-  const RODAPE_COPIA = '\n\n' + miniatura('texto copiado do gerador report cuidar');
+  const RODAPE_COPIA = '\n\n' + miniatura('gerador report cuidar');
 
   function gerarTexto() {
     const equipe = document.getElementById('equipe').value || '';
@@ -265,15 +264,13 @@
     return textoFormatado + RODAPE_COPIA;
   }
 
-  // Atualiza em tempo real enquanto digita
   document.getElementById('reportForm').addEventListener('input', gerarTexto);
   document.getElementById('tipoLogradouro').addEventListener('change', gerarTexto);
   document.getElementById('clienteCiente').addEventListener('change', gerarTexto);
 
-  // Inicializa o preview ao carregar a página
   gerarTexto();
 
-  // Função para copiar o texto formatado
+
   function copiarMensagem() {
     const texto = gerarTexto();
     navigator.clipboard.writeText(texto).then(() => {
@@ -287,7 +284,7 @@
     });
   }
 
-  // Função para limpar totalmente todos os campos
+
   function limparFormulario() {
     document.getElementById('reportForm').reset();
     document.getElementById('clienteCiente').selectedIndex = 0;
